@@ -1,0 +1,83 @@
+JavaScript (Wil)
+
+Most misunderstood language. It is NOT object-oriented; it is a prototypical language (everything is made as a prototype).
+ - Often derided as a toy, but it is almost REQUIRED to know if you’re doing web development. Node is also a very useful tool which requires JavaScript.
+ Chrome & Firefox let us type JavaScript right into the website: Go to greenpeace.org & click inspect. Hit Console and clear the console of errors. <- not every browser have the same version of JavaScript though; try to code in a unanimous way
+
+JavaScript is an object-oriented dynamic language with types and operators, standard built-in objects and methods. It’s syntax is based on the Java and C languages - so many structures from those languages apply to JavaScript as well. One of the key differences is that JavaScript does not have classes; instead, the class functionality is accomplished by object prototypes (look up ES6 classes). The other main difference is that functions are objects, giving functions the capacity to hold executable code and be passed around like any other object. 
+
+Interview whiteboard question: Build a Singly Linked List in JavaScript
+
+Math.sin(3.5) <- you do not have to import Math here!
+
+parseInt(“123”, 10) <- you can change the base here if you like; if you don’t specify, different browsers may give you different results 
+
+In JavaScript, instead of getting an error for a divide by zero (or something similar) you will get NaN (not a number); Although for whatever reason 1/0 in JavaScript returns infinity <- this angers Wilhem because it is actually undefined
+
+JavaScript strings are very similar to Java Strings; string of length 1 is a character in JavaScript. No separate character reference.
+ - length is a property and not a method of strings
+ - can use ‘ ‘ or “ “ to denote string in JavaScript
+ - you can easily call charAt() or replace()
+
+You can import in JavaScript, but it’s not the same as in Java -> importing a library actually RUNS the script; any variables inside the script are actually created, even if you haven’t used them yet
+
+JavaScript DOES distinguish between variables that aren’t initialized and those that are null. If you try to use a variable that has not been initialized, you will get “undefined” not null.
+
+Most variables are defined using the ‘var’ keyword. You can also use ‘let’ or ‘const.’ <- Look up the differences between these!!!
+
+‘This’ keyword does NOT mean the same thing as in Java. It will return your current working environment (e.g. Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …})
+
+Scoping is not the same either - in Java, the var defined in a for loop is inaccessible outside of the loop. In JavaScript, vars are stored in the prototype and not the scope -> you can retrieve the variable from outside the for loop
+
+x++ versus ++x -> ++x allows you to increment the value and use it at the same time (you can use this in Java as well!)
+
+Operations follow the order in which they are typed: “3” + 4 + 5 = 345 but 3 + 4 + “5”  = 75  because the addition happens first. 
+
+== will result in type conversion if you’re not careful. Use === instead to assert if they are equal and also have the same type
+
+Double pipe:
+	var x;
+	var check = x || null; -> check will equal null because x is undefined.
+
+If o exists, then name will equal o.getName() <- this type of syntax is used when you want to avoid a null value
+	var name = o && o.getName();
+	If (o && o.getName() {
+	var name = o.getName();
+	}
+
+JSON - JavaScript Object Notation
+
+var obj = new Object(); gives you a copy of the prototype; this is the same as var obj = {} ; sometimes this is referred to as an ‘anonymous object’ but this is not really the case since the variable DOES have a name (‘obj’)
+
+You can chain objects together to get a specific field (e.g.  var object{ var details } object.details.name)
+
+function Person(name, age) {
+	this.name = name;
+	this.age = age;
+}
+var p = new Person(“Leon”, 25);
+p -> Person (name: “Leon”, age: 25)
+p.age -> 25
+
+IF 
+
+var o = new Person(“Leon”, 25);
+ 
+p still does not equal o! -> they each have a different prototype identity
+If you want to check if these objects are equivalent, you have to write a method to determine this
+
+Var personEquals = function(p1, p2) { return p1.name === p2.name && p1.age === p2.age; };
+personEquals(p, o) -> true
+ - there is no strict typing to this though. You could potentially type personEquals(p, “hello”). This would return false, but just be careful - know that this is a possibility.
+
+Arrays in JavaScript can store any type at any point. It is completely okay to do a = [“hello”, 2, 3]
+
+Now, if you define a[7] = “world” JavaScript will put empty spaces in between -> [“hello, 2, 3, <-empty spaces x 4 ->, “world”]
+
+There is no forEach LOOP in JavaScript but there is an equivalent .forEach stream method
+
+When you use .forEach on the array defined above, the .forEach will SKIP the empty spaces
+
+Functions can be either stored in variables OR they can be defined directly and then used.
+	- function.add() is really cool; when the lecture gets posted, check out the use of ‘arguments’
+	- ALSO, functions have a built in ‘apply’ method just like apply in the function class in java which allow you to pass in more dynamic values.
