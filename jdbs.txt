@@ -1,0 +1,92 @@
+MVC (Model View Controller) is a design pattern you will see in code as well as architecture
+
+						 Java               SQL (DB)
+
+For the most part, we have been building monolith applications in Java - we don’t talk to any outside systems.
+ - only exception is when we have written to a text file
+
+
+If we want these Java and SQL to talk to each other:
+Model : database -> SQL
+Controller : Java (Controller is also ‘middleware’)
+View : website -> HTML, CSS, JS)
+
+Ultimately a computer is a server, but it would shut down if given 10 different web requests. Separate web server exists.
+
+Example: Instagram server which your website can access through some sort of API
+
+If we want Java to talk to MySQL, we have one big limitation -> language!
+ - JDBC : Java Database Connector, an API: 2 parts, JDBC interface & JDBC Driver Manager
+ - you need packages: java.sql & javax.sql
+
+JDBC is an interface; a set of methods that allow us to communicate w/ a SQL database
+ - JDBC uses a driver manager, which handles taking our request and turning it into something SQL can read (also converts it back to Java)
+ - we need a driver for each DB which makes a connector object for that particular database.
+
+JDBC drivers = Java classes
+
+Different driver types: we’re using type 4 - drivers are bundled right into our program; type 3 use middleware to connect to DBs; used when you are changing DBs a lot and you’d rather have a separate server take care of making the connections
+
+If you want to bring something in (some kind of library), go to the maven repository first. https://mvnrepository.com/
+
+ResultSet = response from that query
+
+CRUD: Create Data, Read Data, Update Data, and Delete Data
+
+Statement obj & ResultSet obj
+ - ResultSet has executeQuery(String str) method; int executeUpdate() -insert, update, delete; returns how many records were affected -  & execute() are other methods
+ - record sets are essentially arrays (1-based)
+
+Close things in the order you open them. If you close the statement before the result set, then you won’t have access to the result set. 
+
+Scroll_Insensitive will not respond to updates in the DB, Scroll_Sensitive will re-pull the data for you
+
+After you update the RECORDSET you have to call updateRow() in order for the DB to be updated; similarly, insert will only update the recordset -> make sure you update the actual DB by calling insertRow()
+
+You don’t want to allow a user to insert whatever they want into a select statement. If they entered ‘; it would close the sql statement prematurely which has unknown ramifications. THIS IS CALLED SQL INJECTION.
+
+prepareStatement() allows you to build a sql statement dynamically without allowing the user to type in illegal values
+
+DAO (Data Access Object) Pattern: provides abstraction between JDBC and the rest of the code (abstract it to an object); we won’t have to do all this preparedStatement stuff anymore
+ - most use Data Transfer Objects with DAOs; access to update, find, delete; transfer objects actually HOLD the data.
+
+DTOs provide single-domain data (this is essentially an object of the ‘thing’ you are updating in the database)
+
+DAO is going to have findById(), insert(), delete(), & update() -> all in an abstract class
+ - this can be subclassed to deal with certain tables (employee versus student DAOs)
+
+DAO factory if you want to deal with creating all your different DAOs
+
+Repositories are DAOs, DAOs are not necessarily repositories: each DAO deals with one table ONLY
+
+DAO <T extends DTO> 
+	protected final Connection connection;
+
+	Public DAO (Connection connection) {
+	super();
+	this.connection = connection;
+	}
+
+	Public abstract T findById(int ID);
+	Public abstract List<T> findAll();
+	Public abstract T update(T dto);
+	Public abstract T create(T dto);
+	Public abstract void delete(int id);
+
+}
+
+Public interface DTO {
+	int getId();
+}
+
+Public class PlayerDAO extends DAO<Player> {
+	4 final static strings: 1 for INSERT, GET_ONE (takes in ID), UPDATE, DELETE
+	
+	public Player findById() {
+		Player player = null;
+		try(PreparedStatement pstmt = DBUtil.getConnection(DBType.MYSQLDB
+
+Public class Player extends DTO {
+	private int id;
+	private String name;
+	…. other fields (columns) in table
