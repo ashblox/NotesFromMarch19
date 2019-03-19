@@ -1,0 +1,28 @@
+ANDROID
+
+Programs are written in Java but some of the project structure is XML, so you need to be familiar with both.
+ - Not every Java library is available on Android. 
+
+Programs contain ‘activities’ which you can think of as ‘pages’ to your app. Each activity is a ‘container’ for both the user interface and the code that runs it.
+
+‘Fragments’ allow you to maximize real estate on a larger screen, like a tablet. Having two fragments is like having 2 activities on one screen.
+
+‘Intents’ make up the core message system on Android. They are made up of (1) an action (e.g. view, edit, or dial) & (2) data that action might need (e.g. a phone number). Intents can open new activities in your app or they can open other apps.
+
+‘Intents’ don’t work automatically - you have to register an ‘intent filter’ first. Sometimes an intent can be received by more than one application and you can give the user a choice. Think of when Youtube asks if you want to watch in the app or launch in the browser.
+
+‘Views’ are the basic building blocks of the UI, much like paragraph <p> or anchor <a> tags in HTML. Common views you’ll see are TextView, ImageView, Layout, and Button.
+
+Widgets and notifications may want to be programmed along with the application.
+
+Hardware you can use in your app may include: (1) Accelerometer (measures acceleration, but also tells you if the phone is shaken, turned upside down, etc.) (2) Bluetooth Radio (tells you if a headset is connected (3) Compass (4) Camera (5) GPS receiver. You can also (if you wish) access the Contacts list on the phone.
+
+Your UI can utilize more than just on-click. Think of all the possibilities with swipe, flip, drag, and pinch!
+
+Androids source code is open source. 
+ - Built on the open source Linux kernel; Java core libraries and Android Runtime frameworks, Open GL (Graphics Library), Webkit (promotes easier viewing of web pages), SQLite (database engine), media frameworks for audio & video, and Secure Sockets Layer (SSL) for internet security
+
+API & SDK examples: https://developer.android.com/samples/
+ - these will also help w/ notifications, alarms, intents, menus, search, preferences, & background services
+
+https://doc.lagout.org/programmation/Android/Android%20App%20Development%20for%20Dummies%20%283rd%20ed.%29%20%5BBurton%202015-03-09%5D.pdf
