@@ -1,0 +1,81 @@
+HTML & CSS (Nhu)
+
+HTML - used to display webpage content (also provides structure) 
+ - NOT a programming language
+ - invented in early 1990 (originally for sharing of scientific papers)
+ - just a text file that is wrapped with tags
+
+Pictures are not ‘content’ and so the tags are considered self-closing
+
+Attribute is class - value is editor-note
+
+Head may contain descriptions, author; things in head are not things that are seen in the page; search engine/browser may see/use these things
+ - also specify character set here (e.g. UTF-8)
+
+Most of your content will be inside the body
+
+https://nhu313.github.io/reveal-slides/examples/html-basics.html -> right click ‘inspect’ to view the code; you can do this with any webpage (try Google!)
+
+2 types of elements: (1) Block: occupy 100% of the width (2) Inline: takes up enough space for content only
+ - for height specifications, use pixels and not percent (different browsers render % differently)
+
+Headings: smaller the number, the more important it is.
+
+Paragraphs, Lists (Unordered - begin w/ <ul> tag; Ordered - gives you numbers - begin w/ <ol> tag
+
+Images define the src first (file path) alt (if they can’t find the image, what to show in it’s place) and title (when you hover over, what the text will read)
+
+Links - you can give an absolute path (path to an unrelated website), a relative path (the next page / a page in the same directory), OR you can link to an image by providing the path and the img
+
+A relative path that goes backward once from the current page “../js/reveal.js”; twice from the current page “../../js/reveal.js”;
+
+Forms allow you to send info to the server (e.g. if you tweet or post comment on YouTube)
+
+Input types include: text, checkbox, radio, password, email, button, & submit
+
+Line/Ruler if you just want a line pictured in the middle of a page (think resume borders)
+
+HTML ignores newlines & treats multiple spaces as one space only - you need to use <br \> for newlines &nbsp for spaces (if you want to depict multiple spaces)
+
+COMMAND + / in most editors is a shortcut for ‘comment’
+
+In HTML 5, the code is broken down by more appropriate, semantic tags. There are still <div>s but less of them.
+
+Look into installing Atom (free IDE)
+
+HTML is the body; CSS is the code -> CSS makes things pretty
+
+http://www.csszengarden.com/
+
+Any ‘em’ inside any paragraph on page
+
+HEX is most common; RGB next most common. Google search color hex codes if you want to pick a color for your website
+ 
+HSL: how much red, green, blue (not very common)
+
+Basic colors can be represented by color name only but this is ill-advised. Very little selection and the browser may depict that color differently.
+
+Background demo: https://developer.mozilla.org/en-US/docs/Web/CSS/background
+
+You can also play with backgrounds here: https://www.w3schools.com/cssref/pr_background-image.asp
+
+Narrow google search to ‘Creative Common’ images if you want those that are not copyrighted.
+
+Font properties: line height = how much space in between
+
+Lists are bullet-style by default but you can change this if you’d like
+
+Border types: ‘solid’ in slides but could also do ’dashes’ 
+
+Margin add to the outside of your content whereas padding eats into the inside.
+
+Play with position: https://developer.mozilla.org/en-US/docs/Web/CSS/position
+
+Width: % will adjust for screen size; pixels won’t. If you want a page to be viewed on a laptop & on mobile, you may want to consider using %
+
+Most common selector = class selector
+
+CSS & HTML should each be in their own files; connect the CSS file in side the HTML file 
+ <link rel="stylesheet" href="/style.css">
+
+ 
